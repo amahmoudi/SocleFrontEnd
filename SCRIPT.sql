@@ -1,6 +1,6 @@
 create table APP_USER (
 `ID` int(11) NOT NULL AUTO_INCREMENT,
-`SSO_ID` int(11) NOT NULL ,
+`SSO_ID` varchar(100) NOT NULL ,
 PASSWORD varchar(100),
 FIRST_NAME varchar(100),
 LAST_NAME varchar(100),
