@@ -16,10 +16,16 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.domain.Persistable;
 
 @Entity
 @Table(name="APP_USER")
-public class User implements Serializable{
+public class User implements Persistable<Integer>, Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
@@ -47,9 +53,48 @@ public class User implements Serializable{
 	@NotEmpty
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "APP_USER_USER_PROFILE", 
-             joinColumns = { @JoinColumn(name = "USER_ID") }, 
-             inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })
+    joinColumns = { @JoinColumn(name = "USER_ID") }, 
+    inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })
 	private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
+
+	public User() {
+		super();
+	}
+	
+	public User(String ssoId, String password, String firstName, String lastName, String email,
+			Set<UserProfile> userProfiles) {
+		super();
+		this.ssoId = ssoId;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.userProfiles = userProfiles;
+	}
+
+
+	public User(Integer id, String ssoId, String password, String firstName, String lastName, String email,
+			Set<UserProfile> userProfiles) {
+		super();
+		this.id = id;
+		this.ssoId = ssoId;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.userProfiles = userProfiles;
+	}
+
+
+	public User(Integer id, String ssoId, String password, String firstName, String lastName, String email) {
+		super();
+		this.id = id;
+		this.ssoId = ssoId;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+	}
 
 	public Integer getId() {
 		return id;
@@ -147,6 +192,11 @@ public class User implements Serializable{
 		return "User [id=" + id + ", ssoId=" + ssoId + ", password=" + password
 				+ ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", email=" + email + "]";
+	}
+
+	@Override
+	public boolean isNew() {
+		return id==null;
 	}
 
 

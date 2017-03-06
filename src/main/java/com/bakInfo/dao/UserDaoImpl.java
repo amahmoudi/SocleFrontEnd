@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
+import org.hibernate.HibernateException;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
@@ -28,12 +29,14 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
 	}
 
 	public User findBySSO(String sso) {
-		logger.info("SSO : {}", sso);
 		Criteria crit = createEntityCriteria();
 		crit.add(Restrictions.eq("ssoId", sso));
 		User user = (User)crit.uniqueResult();
-		if(user!=null){
-			Hibernate.initialize(user.getUserProfiles());
+		try {
+			if(user!=null){
+				Hibernate.initialize(user.getUserProfiles());
+			}
+		} catch (HibernateException e) {
 		}
 		return user;
 	}
