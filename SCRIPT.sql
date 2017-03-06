@@ -10,18 +10,18 @@ primary key (id)
 );
 
 create table PERSISTENT_LOGINS (
+`ID` int(11) NOT NULL AUTO_INCREMENT,
 series  varchar(100),
 USERNAME varchar(100),
 TOKEN varchar(100),
 last_used timestamp,
-primary key (series)
-);
-
-create table USER_PROFILE (
-`ID` int(11) NOT NULL ,
-TYPE varchar(100),
 primary key (id)
 );
 
+create table USER_PROFILE (
+`ID` int(11) NOT NULL AUTO_INCREMENT,
+TYPE varchar(100),
+primary key (id)
+);
 
 
