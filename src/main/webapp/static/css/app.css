@@ -38,8 +38,8 @@ background-image: linear-gradient(to top, #EDEDED 0%, #EAEAEA 8%, #2F2F2F 100%, 
 .generic-container {
   position:fixed;
   width:80%;
-  margin-left: 20px;
-  margin-top: 20px;
+  margin-left: 120px;
+  margin-top: 100px;
   margin-bottom: 20px;
   padding: 20px;
   background-color: #EAE7E7;
