@@ -2,12 +2,12 @@
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>User Registration Form</title>
+	<title><spring:message code="socle.userRegistrationForm" text="default text" /></title>
 	<link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
 	<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 </head>
@@ -16,13 +16,13 @@
  	<div class="generic-container">
 		<%@include file="authheader.jsp" %>
 
-		<div class="well lead">User Registration Form</div>
+		<div class="well lead"><spring:message code="socle.userRegistrationForm" text="default text" /></div>
 	 	<form:form method="POST" modelAttribute="user" class="form-horizontal">
 			<form:input type="hidden" path="id" id="id"/>
 			
 			<div class="row">
 				<div class="form-group col-md-12">
-					<label class="col-md-3 control-lable" for="firstName">First Name</label>
+					<label class="col-md-3 control-lable" for="firstName"><spring:message code="socle.firstName" text="default text" /></label>
 					<div class="col-md-7">
 						<form:input type="text" path="firstName" id="firstName" class="form-control input-sm"/>
 						<div class="has-error">
@@ -34,7 +34,7 @@
 	
 			<div class="row">
 				<div class="form-group col-md-12">
-					<label class="col-md-3 control-lable" for="lastName">Last Name</label>
+					<label class="col-md-3 control-lable" for="lastName"><spring:message code="socle.lasteName" text="default text" /></label>
 					<div class="col-md-7">
 						<form:input type="text" path="lastName" id="lastName" class="form-control input-sm" />
 						<div class="has-error">
@@ -46,7 +46,7 @@
 	
 			<div class="row">
 				<div class="form-group col-md-12">
-					<label class="col-md-3 control-lable" for="ssoId">SSO ID</label>
+					<label class="col-md-3 control-lable" for="ssoId"><spring:message code="socle.ssoId" text="default text" /></label>
 					<div class="col-md-7">
 						<c:choose>
 							<c:when test="${edit}">
@@ -65,7 +65,7 @@
 	
 			<div class="row">
 				<div class="form-group col-md-12">
-					<label class="col-md-3 control-lable" for="password">Password</label>
+					<label class="col-md-3 control-lable" for="password"><spring:message code="socle.password" text="default text" /></label>
 					<div class="col-md-7">
 						<form:input type="password" path="password" id="password" class="form-control input-sm" />
 						<div class="has-error">
@@ -77,7 +77,7 @@
 	
 			<div class="row">
 				<div class="form-group col-md-12">
-					<label class="col-md-3 control-lable" for="email">Email</label>
+					<label class="col-md-3 control-lable" for="email"><spring:message code="socle.mail" text="default text" /></label>
 					<div class="col-md-7">
 						<form:input type="text" path="email" id="email" class="form-control input-sm" />
 						<div class="has-error">
@@ -89,7 +89,7 @@
 	
 			<div class="row">
 				<div class="form-group col-md-12">
-					<label class="col-md-3 control-lable" for="userProfiles">Roles</label>
+					<label class="col-md-3 control-lable" for="userProfiles"><spring:message code="socle.roles" text="default text" /></label>
 					<div class="col-md-7">
 						<form:select path="userProfiles" items="${roles}" multiple="true" itemValue="id" itemLabel="type" class="form-control input-sm" />
 						<div class="has-error">
@@ -103,10 +103,10 @@
 				<div class="form-actions floatRight">
 					<c:choose>
 						<c:when test="${edit}">
-							<input type="submit" value="Update" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/list' />">Cancel</a>
+							<input type="submit" value="Update" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/list' />"><spring:message code="socle.cancel" text="default text" /></a>
 						</c:when>
 						<c:otherwise>
-							<input type="submit" value="Register" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/list' />">Cancel</a>
+							<input type="submit" value="Register" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/list' />"><spring:message code="socle.cancel" text="default text" /></a>
 						</c:otherwise>
 					</c:choose>
 				</div>
